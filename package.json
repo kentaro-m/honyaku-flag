@@ -7,7 +7,20 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon --watch './src/**/*.ts' --exec 'ts-node' src/app.ts",
     "start": "npm run build && node lib/app.js",
-    "build": "tsc -p ."
+    "build": "tsc -p .",
+    "lint": "eslint './src/**/*.ts'",
+    "lint:fix": "eslint --fix './src/**/*.ts'"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "./src/**/*.{ts,tsx}": [
+      "eslint --fix './src/**/*.ts'",
+      "git add"
+    ]
   },
   "repository": {
     "type": "git",
@@ -25,6 +38,14 @@
     "nodemon": "^1.19.1"
   },
   "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^1.13.0",
+    "@typescript-eslint/parser": "^1.13.0",
+    "eslint": "^6.1.0",
+    "eslint-config-prettier": "^6.0.0",
+    "eslint-plugin-prettier": "^3.1.0",
+    "husky": "^3.0.1",
+    "lint-staged": "^9.2.0",
+    "prettier": "^1.18.2",
     "ts-node": "^8.3.0",
     "typescript": "^3.5.3"
   }
