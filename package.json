@@ -1,7 +1,7 @@
 {
   "name": "honyaku-flag",
   "version": "1.0.0",
-  "description": "",
+  "description": "A Slack app that translates a message when an emoji reaction added to the message.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -33,6 +33,7 @@
   },
   "homepage": "https://github.com/kentaro-m/honyaku-flag#readme",
   "dependencies": {
+    "@google-cloud/translate": "^4.1.2",
     "@slack/bolt": "^1.2.0",
     "dotenv": "^8.0.0",
     "nodemon": "^1.19.1"
