@@ -7,7 +7,10 @@ A Slack app that translates a message when an emoji reaction added to the messag
 ![Demo](./demo.gif)
 
 ## :robot: Set up the app
-1. Create the new app. [Slack API: Applications | Slack](https://api.slack.com/apps)
+1. Create the new app.
+
+[Slack API: Applications | Slack](https://api.slack.com/apps)
+
 2. Subscribe to workspace events (Add `reaction_added` event and subscribe url to be notified of events).
 3. Add permission scopes by reference to the following list.
 
@@ -17,12 +20,11 @@ A Slack app that translates a message when an emoji reaction added to the messag
 
 4. Install the app to the workspace and note `OAuth Access Token`, `Bot User OAuth Access Token` and `Signing Secret`.
 
-## :key: Set up credentials
-Create the Google Cloud Translation API by reference to the following page.
+5. Create the Google Cloud Translation API by reference to the following page.
 
 [Using API Keys  |  Authentication  |  Google Cloud](https://cloud.google.com/docs/authentication/api-keys)
 
-Rename the `.env.example` to `.env` and add credentials.
+6. Rename the `.env.example` to `.env` and add credentials.
 
 ```
 SLACK_BOT_TOKEN=<Bot User OAuth Access Token>
@@ -30,6 +32,16 @@ SLACK_OAUTH_TOKEN=<OAuth Access Token>
 SLACK_SIGNING_SECRET=<Signing Secret>
 TRANSLATION_API_TOKEN=<Google Cloud Translation API Token>
 ```
+
+If you want to run the app only on the channel which the app was invited, you need to add `SLACK_USER_ID` to `.env`.
+
+Add a permission scope:
+
+* `users:read` Access your workspace’s profile information
+
+Get the `SLACK_USER_ID` by reference to the following page (Select the workspace which the app was installed and input `SLACK_BOT_TOKEN` as a token).
+
+[auth.test method | Slack](https://api.slack.com/methods/auth.test/test)
 
 ## :construction_worker: Develop
 
@@ -41,7 +53,7 @@ Set up to subscribe locally events by reference to the following page.
 Add the URL of `Forwarding` to `Request URL` with Event Subscriptions page in Slack (Concatenate the URL of `Forwarding` to the path `/slack/events`. e.g. `https://foobar.ngrok.io/slack/events`).
 
 ```bash
-$ ngrok http 3000
+$ ngrok http 8080
 ngrok by @inconshreveable                                       (Ctrl+C to quit)
 
 Session Status                online

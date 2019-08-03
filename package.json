@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon --watch './src/**/*.ts' --exec 'ts-node' src/app.ts",
-    "start": "npm run build && node lib/app.js",
+    "start": "node lib/app.js",
     "build": "tsc -p .",
     "lint": "eslint './src/**/*.ts'",
     "lint:fix": "eslint --fix './src/**/*.ts'"

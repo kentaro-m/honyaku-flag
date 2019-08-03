@@ -1,5 +1,6 @@
 import { App, ReactionAddedEvent, Context } from "@slack/bolt"
 import { findLanguageCode } from "../utils/language"
+import { isInvitedBot } from "../utils/bot"
 import { langcodes } from "../constants/langcodes"
 import { Translate } from "@google-cloud/translate"
 
@@ -23,6 +24,22 @@ class Translation {
       }
 
       const item: any = this.event.item
+
+      const userId: string = process.env.SLACK_USER_ID || ""
+
+      /**
+       * INFO: A check for running the app only on the channel which the app was invited.
+       */
+      if (userId) {
+        const members: any = await this.app.client.conversations.members({
+          token: process.env.SLACK_OAUTH_TOKEN,
+          channel: item.channel
+        })
+
+        if (!isInvitedBot(userId, members.members)) {
+          return
+        }
+      }
 
       const messages: any = await this.app.client.conversations.replies({
         token: process.env.SLACK_OAUTH_TOKEN,
