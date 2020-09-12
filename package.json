@@ -36,7 +36,7 @@
     "@google-cloud/translate": "^4.1.2",
     "@slack/bolt": "^1.2.0",
     "dotenv": "^8.0.0",
-    "nodemon": "^1.19.1"
+    "nodemon": "^2.0.4"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^1.13.0",
