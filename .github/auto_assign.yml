@@ -5,7 +5,7 @@ addReviewers: false
 addAssignees: true
 
 # A list of reviewers to be added to pull requests (GitHub user name)
-reviewers:
+assignees:
   - kentaro-m
 
 # A number of reviewers added to the pull request
